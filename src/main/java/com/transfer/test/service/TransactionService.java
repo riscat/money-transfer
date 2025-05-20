@@ -1,7 +1,8 @@
-package com.jpmorgan.demo.service;
+package com.transfer.test.service;
 
-import com.jpmorgan.demo.model.Account;
-import com.jpmorgan.demo.repository.AccountRepository;
+import com.transfer.test.model.Account;
+import com.transfer.test.repository.AccountRepository;
+import com.transfer.test.constant.ErrorConstants;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
@@ -9,8 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.NoSuchElementException;
-
-import static com.jpmorgan.demo.constant.ErrorConstants.*;
 
 @Service
 public class TransactionService {
@@ -36,15 +35,15 @@ public class TransactionService {
             } catch (ObjectOptimisticLockingFailureException e) {
                 System.out.println("[Retry " + attempt + "] Optimistic locking failure: " + e.getMessage());
                 if (attempt == maxRetries) {
-                    throw new IllegalStateException(MAX_RETRY_FAILED);
+                    throw new IllegalStateException(ErrorConstants.MAX_RETRY_FAILED);
                 }
             }
         }
     }
 
     private void executeTransfer(String fromAccountNumber, String toAccountNumber, BigDecimal amount, String currency) {
-        Account from = getAccountOrThrow(fromAccountNumber, FROM_ACCOUNT_NOT_FOUND);
-        Account to = getAccountOrThrow(toAccountNumber, TO_ACCOUNT_NOT_FOUND);
+        Account from = getAccountOrThrow(fromAccountNumber, ErrorConstants.FROM_ACCOUNT_NOT_FOUND);
+        Account to = getAccountOrThrow(toAccountNumber, ErrorConstants.TO_ACCOUNT_NOT_FOUND);
 
         validateCurrencyMatch(from, currency);
         validateSufficientBalance(from, amount);
@@ -64,14 +63,14 @@ public class TransactionService {
 
     private void validateCurrencyMatch(Account from, String currency) {
         if (!currency.equals(from.getCurrency())) {
-            throw new IllegalArgumentException(SOURCE_CURRENCY_MISMATCH);
+            throw new IllegalArgumentException(ErrorConstants.SOURCE_CURRENCY_MISMATCH);
         }
     }
 
     private void validateSufficientBalance(Account from, BigDecimal amount) {
         BigDecimal totalDeduct = amount.add(calculateFee(amount));
         if (from.getBalance().compareTo(totalDeduct) < 0) {
-            throw new IllegalStateException(INSUFFICIENT_BALANCE);
+            throw new IllegalStateException(ErrorConstants.INSUFFICIENT_BALANCE);
         }
     }
 

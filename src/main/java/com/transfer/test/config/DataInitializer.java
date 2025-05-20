@@ -1,9 +1,9 @@
-package com.jpmorgan.demo.config;
+package com.transfer.test.config;
 
-import com.jpmorgan.demo.model.Account;
-import com.jpmorgan.demo.model.FXRate;
-import com.jpmorgan.demo.repository.AccountRepository;
-import com.jpmorgan.demo.repository.FXRateRepository;
+import com.transfer.test.model.Account;
+import com.transfer.test.model.FXRate;
+import com.transfer.test.repository.AccountRepository;
+import com.transfer.test.repository.FXRateRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

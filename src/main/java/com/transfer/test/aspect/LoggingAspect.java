@@ -1,4 +1,4 @@
-package com.jpmorgan.demo.aspect;
+package com.transfer.test.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoggingAspect {
 
-    @Before("execution(* com.jpmorgan.demo.service.*.*(..))")
+    @Before("execution(* com.transfer.test.service.*.*(..))")
     public void logBefore(JoinPoint joinPoint) {
         System.out.println("[LOG BEFORE] Method: " + joinPoint.getSignature());
     }
 
-    @AfterReturning(pointcut = "execution(* com.jpmorgan.demo.service.*.*(..))", returning = "result")
+    @AfterReturning(pointcut = "execution(* com.transfer.test.service.*.*(..))", returning = "result")
     public void logAfter(JoinPoint joinPoint, Object result) {
         System.out.println("[LOG AFTER] Method: " + joinPoint.getSignature() + " completed.");
     }

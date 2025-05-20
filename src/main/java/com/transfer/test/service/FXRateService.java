@@ -1,12 +1,11 @@
-package com.jpmorgan.demo.service;
+package com.transfer.test.service;
 
-import com.jpmorgan.demo.model.FXRate;
-import com.jpmorgan.demo.repository.FXRateRepository;
+import com.transfer.test.model.FXRate;
+import com.transfer.test.repository.FXRateRepository;
+import com.transfer.test.constant.ErrorConstants;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-
-import static com.jpmorgan.demo.constant.ErrorConstants.FX_RATE_NOT_FOUND;
 
 @Service
 public class FXRateService {
@@ -20,6 +19,6 @@ public class FXRateService {
         if (from.equals(to)) return BigDecimal.ONE;
         return fxRateRepository.findByFromCurrencyAndToCurrency(from, to)
                 .map(FXRate::getRate)
-                .orElseThrow(() -> new IllegalArgumentException(FX_RATE_NOT_FOUND));
+                .orElseThrow(() -> new IllegalArgumentException(ErrorConstants.FX_RATE_NOT_FOUND));
     }
 }

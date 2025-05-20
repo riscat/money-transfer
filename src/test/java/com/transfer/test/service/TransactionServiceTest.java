@@ -1,10 +1,11 @@
-package com.jpmorgan.demo.service;
+package com.transfer.test.service;
 
 
-import com.jpmorgan.demo.model.Account;
-import com.jpmorgan.demo.model.FXRate;
-import com.jpmorgan.demo.repository.AccountRepository;
-import com.jpmorgan.demo.repository.FXRateRepository;
+import com.transfer.test.model.Account;
+import com.transfer.test.model.FXRate;
+import com.transfer.test.repository.AccountRepository;
+import com.transfer.test.repository.FXRateRepository;
+import com.transfer.test.constant.ErrorConstants;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import static com.jpmorgan.demo.constant.ErrorConstants.SOURCE_CURRENCY_MISMATCH;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
@@ -72,7 +72,7 @@ public class TransactionServiceTest {
                     transactionService.transfer("ACC002", "ACC001", new BigDecimal("20"), "AUD");
                     fail("Expected IllegalArgumentException not thrown");
                 } catch (IllegalArgumentException e) {
-                    if (!SOURCE_CURRENCY_MISMATCH.equals(e.getMessage())) {
+                    if (!ErrorConstants.SOURCE_CURRENCY_MISMATCH.equals(e.getMessage())) {
                         fail("Unexpected exception message: " + e.getMessage());
                     }
                 }

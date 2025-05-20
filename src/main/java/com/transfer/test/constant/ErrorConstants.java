@@ -1,4 +1,4 @@
-package com.jpmorgan.demo.constant;
+package com.transfer.test.constant;
 
 public class ErrorConstants {
     public static final String SOURCE_CURRENCY_MISMATCH = "Transfer currency must match the source account's base currency";

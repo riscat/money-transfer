@@ -1,6 +1,6 @@
-package com.jpmorgan.demo.repository;
+package com.transfer.test.repository;
 
-import com.jpmorgan.demo.model.FXRate;
+import com.transfer.test.model.FXRate;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

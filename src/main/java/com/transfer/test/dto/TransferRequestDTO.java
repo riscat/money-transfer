@@ -1,4 +1,4 @@
-package com.jpmorgan.demo.dto;
+package com.transfer.test.dto;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;

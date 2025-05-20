@@ -2,7 +2,7 @@
 
 A Spring Boot application for performing money transfers between accounts with support for currency conversion, concurrency control, and configurable transaction fees.
 
-This is demo application that was requested by JPMorgan Chase as a take-home Code Challenge
+This is demo application that was requested by a prospect company as a take-home Code Challenge
 
 ---
 

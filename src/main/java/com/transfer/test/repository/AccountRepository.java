@@ -1,6 +1,6 @@
-package com.jpmorgan.demo.repository;
+package com.transfer.test.repository;
 
-import com.jpmorgan.demo.model.Account;
+import com.transfer.test.model.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.jpmorgan.demo.model;
+package com.transfer.test.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

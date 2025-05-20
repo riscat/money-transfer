@@ -1,7 +1,7 @@
-package com.jpmorgan.demo.controller;
+package com.transfer.test.controller;
 
-import com.jpmorgan.demo.dto.TransferRequestDTO;
-import com.jpmorgan.demo.service.TransactionService;
+import com.transfer.test.dto.TransferRequestDTO;
+import com.transfer.test.service.TransactionService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
